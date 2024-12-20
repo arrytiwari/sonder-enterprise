@@ -49,7 +49,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="relative z-10 text-center">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6">
-          Sonder Enterprise
+          Sonder Enterprises
           </h1>
           <p className="mx-auto max-w-[700px] text-xl text-white mb-8 text-semibold">
             Crafting innovative software solutions to propel your business forward.
@@ -84,14 +84,14 @@ export default function Home() {
             <Image
               alt="About Us"
               className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-              height="310"
-              src="/aboutus.png"
-              width="550"
+              height={1000}
+              src="/aboutus.jpeg"
+              width={1000}
             />
             <div className="flex flex-col justify-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-800">About Us</h2>
               <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                At TechForge Solutions, we're passionate about leveraging technology to solve complex business challenges.
+                At Sonder Enterprises, we're passionate about leveraging technology to solve complex business challenges.
                 With our team of expert developers and strategists, we've been helping companies innovate and grow for over  3 years.
               </p>
             </div>
@@ -106,41 +106,41 @@ export default function Home() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {[
         {
-          image: "/portfolio1.png",
-          name: "TrendSphere",
+          image: "/viaprize.jpg",
+          name: "viaPrize",
           description:
-            "A feature-rich e-commerce platform tailored for fashion retailers, with custom catalogs and advanced search filters.",
+            "The world's only crowdfunded prize platform | Idea marketplace combining crowdfunding and freelancing | Post ideas, fund projects, & win prizes!",
         },
         {
-          image: "/portfolio2.png",
-          name: "TaskFlow Pro",
+          image: "/aperturs.png",
+          name: "Aperturs",
           description:
-            "A cloud-based project management tool with Kanban boards, Gantt charts, and team messaging features.",
+            "social media management for busy professionals",
         },
         {
-          image: "/portfolio3.png",
-          name: "BudgetWise",
+          image: "/commeme.png",
+          name: "Commeme",
           description:
-            "A fintech mobile app that simplifies personal finance management, offering budgeting tools and secure account synchronization.",
+            "the ultimate platform where your memes can spark a revolution. Contribute to the meme economy and make degen positive sum. ",
         },
-        {
-          image: "/portfolio4.png",
-          name: "HealthSync",
-          description:
-            "An end-to-end healthcare management system with EHR integration and billing automation for clinics.",
-        },
-        {
-          image: "/portfolio5.png",
-          name: "SupplyChain Nexus",
-          description:
-            "A logistics platform enhancing supply chain efficiency through real-time tracking and predictive analytics.",
-        },
-        {
-          image: "/portfolio6.png",
-          name: "LearnSphere",
-          description:
-            "An engaging EdTech platform providing virtual classrooms, on-demand courses, and gamified assessments.",
-        },
+        // {
+        //   image: "/portfolio4.png",
+        //   name: "HealthSync",
+        //   description:
+        //     "An end-to-end healthcare management system with EHR integration and billing automation for clinics.",
+        // },
+        // {
+        //   image: "/portfolio5.png",
+        //   name: "SupplyChain Nexus",
+        //   description:
+        //     "A logistics platform enhancing supply chain efficiency through real-time tracking and predictive analytics.",
+        // },
+        // {
+        //   image: "/portfolio6.png",
+        //   name: "LearnSphere",
+        //   description:
+        //     "An engaging EdTech platform providing virtual classrooms, on-demand courses, and gamified assessments.",
+        // },
       ].map((portfolio, index) => (
         <div
           key={index}
@@ -148,7 +148,7 @@ export default function Home() {
         >
           <Image
             alt={`${portfolio.name} Thumbnail`}
-            className="w-full h-48 object-cover"
+            className="w-full h-48 object-fill"
             height="200"
             src={portfolio.image}
             width="300"
@@ -215,7 +215,7 @@ export default function Home() {
     </section>
       <footer className="bg-blue-800 text-white py-8 px-4 md:px-6">
         <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-sm">© 2023 SONDER ENTERPRISE. All rights reserved.</p>
+          <p className="text-sm">© 2023 SONDER ENTERPRISES. All rights reserved.</p>
           <nav className="flex gap-4 sm:gap-6 mt-4 sm:mt-0">
             <Link className="text-sm hover:underline underline-offset-4" href="#">
               Terms of Service
