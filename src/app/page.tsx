@@ -32,7 +32,7 @@ export default function Home() {
       <header className="absolute top-0 left-0 right-0 z-20 px-4 lg:px-6 h-20 flex items-center justify-between bg-transparent">
         <Link className="flex items-center justify-center" href="#">
           <Rocket className="h-8 w-8 text-blue-500" />
-          <span className="ml-2 text-xl font-bold text-white">Sonder Enterprise</span>
+          <span className="ml-2 text-xl font-bold text-white">Sonder Enterprises</span>
         </Link>
         {/* <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-blue-600">
           Contact Us
