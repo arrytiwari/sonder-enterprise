@@ -31,7 +31,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <header className="absolute top-0 left-0 right-0 z-20 px-4 lg:px-6 h-20 flex items-center justify-between bg-transparent">
         <Link className="flex items-center justify-center" href="#">
-          <Rocket className="h-8 w-8 text-blue-500" />
+          <Rocket className="h-8 w-8 text-blue-700" />
           <span className="ml-2 text-xl font-bold text-white">Sonder Enterprises</span>
         </Link>
         {/* <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-blue-600">
@@ -40,7 +40,7 @@ export default function Home() {
       </header>
       <section className="relative w-full min-h-screen flex items-center justify-center py-12 px-4">
         <Image
-          src="/herobg.png"
+          src="/sonderherobg.jpeg"
           alt="Hero Background"
           fill
           className="object-cover"
@@ -217,10 +217,10 @@ export default function Home() {
         <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm">© 2023 SONDER ENTERPRISES. All rights reserved.</p>
           <nav className="flex gap-4 sm:gap-6 mt-4 sm:mt-0">
-            <Link className="text-sm hover:underline underline-offset-4" href="#">
+            <Link className="text-sm hover:underline underline-offset-4" href="/terms-and-service">
               Terms of Service
             </Link>
-            <Link className="text-sm hover:underline underline-offset-4" href="#">
+            <Link className="text-sm hover:underline underline-offset-4" href="/privacy-and-policy">
               Privacy Policy
             </Link>
           </nav>
