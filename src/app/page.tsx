@@ -17,13 +17,13 @@ export default function Home() {
   })
   const [showPopup, setShowPopup] = useState(false)
   const [email, setEmail] = useState("")
+  const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false)
 
   // Add this projects array
   const projects = [
-    { id: 1, name: "Viaprize", image: "/viaprize.jpg" },
-    { id: 2, name: "Aperturs", image: "/aperturs.png" },
-    { id: 3, name: "Commeme", image: "/commeme.png" },
-   
+    { id: 1, name: "Viaprize", image: "/viaprize.jpg" ,link:"https://viaprize.org"},
+    { id: 2, name: "Aperturs", image: "/aperturs.png", link:"https://www.aperturs.com/" },
+    { id: 3, name: "Commeme", image: "/commeme.png" ,link:"https://commeme-tau.vercel.app/"},  
   ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -40,15 +40,16 @@ export default function Home() {
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setEmail("")
-    // Handle newsletter subscription
+    setShowSubscriptionPopup(true)
   }
 
   const closePopup = () => setShowPopup(false)
+  const closeSubscriptionPopup = () => setShowSubscriptionPopup(false)
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 left-0 right-0 z-50 shadow-sm">
+      <header className="sticky top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md shadow-sm border-b border-gray-200/20">
         <div className="container mx-auto px-4 flex items-center justify-between h-20">
           <Link className="flex items-center" href="#">
             <div className="flex items-center">
@@ -213,9 +214,9 @@ export default function Home() {
               the project. We transform your idea into a scalable and innovative platform, ensuring that your technology
               adds value to your users' experience, while being aligned with your overall business plans and objectives.
             </p>
-            <Link href="#" className="inline-block px-6 py-3 bg-gray-800 text-white font-medium hover:bg-gray-700">
+            {/* <Link href="#" className="inline-block px-6 py-3 bg-gray-800 text-white font-medium hover:bg-gray-700">
               Know more
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
@@ -226,66 +227,80 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">Our Projects</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             {projects.map((project) => (
-              <div key={project.id} className="overflow-hidden group relative">
-                
+              <Link href={`${project.link}`} key={project.id} className="overflow-hidden group relative" target="_blank" rel="noopener noreferrer">
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.name}
                   width={300}
                   height={300}
-                  className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <h4 className="text-white font-medium text-center px-4">{project.name}</h4>
+                <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                  <h4 className="text-white font-medium text-center px-4 mb-2">{project.name}</h4>
+                  <span className="text-yellow-400 text-sm">View Project</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
-         
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="w-full py-12 md:py-24 bg-white px-8  flex  justify-between ">
-       <div className="space-y-2 ">  <h2 className="text-3xl font-bold text-gray-800 text-left">Contact Us</h2> <h3 className="font-bold text-gray-800 ">READY TO MOVE TO THE NEXT LEVEL?</h3></div>
-         
-          <form onSubmit={handleSubmit} className="space-y-4 w-[50%]">
-            <Input name="name" value={formData.name} onChange={handleInputChange} placeholder="Your Name" required />
-            <Input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Your Email"
-              required
-            />
-            <Textarea
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              placeholder="Your Message"
-              required
-              className="min-h-[150px]"
-            />
-            <Button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-white">
-              Send Message
-              <Send className="ml-2 h-4 w-4" />
-            </Button>
-          </form>
+        <div className="space-y-2 ">
+          {" "}
+          <h2 className="text-3xl font-bold text-gray-800 text-left">Contact Us</h2>{" "}
+          <h3 className="font-bold text-gray-800 ">READY TO MOVE TO THE NEXT LEVEL?</h3>
+        </div>
 
-          {/* Popup */}
-          {showPopup && (
-            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-              <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
-                <h3 className="text-xl font-bold mb-4 text-gray-800">Message Sent</h3>
-                <p className="text-gray-600 mb-6">Your message has been sent successfully!</p>
-                <Button onClick={closePopup} className="bg-yellow-400 hover:bg-yellow-500 text-white w-full">
-                  Close
-                </Button>
-              </div>
+        <form onSubmit={handleSubmit} className="space-y-4 w-[50%]">
+          <Input name="name" value={formData.name} onChange={handleInputChange} placeholder="Your Name" required />
+          <Input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Your Email"
+            required
+          />
+          <Textarea
+            name="message"
+            value={formData.message}
+            onChange={handleInputChange}
+            placeholder="Your Message"
+            required
+            className="min-h-[150px]"
+          />
+          <Button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-white">
+            Send Message
+            <Send className="ml-2 h-4 w-4" />
+          </Button>
+        </form>
+
+        {/* Popup */}
+        {showPopup && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
+              <h3 className="text-xl font-bold mb-4 text-gray-800">Message Sent</h3>
+              <p className="text-gray-600 mb-6">Your message has been sent successfully!</p>
+              <Button onClick={closePopup} className="bg-yellow-400 hover:bg-yellow-500 text-white w-full">
+                Close
+              </Button>
             </div>
-          )}
-     
+          </div>
+        )}
+        {/* Newsletter Subscription Popup */}
+        {showSubscriptionPopup && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
+              <h3 className="text-xl font-bold mb-4 text-gray-800">Subscribed Successfully</h3>
+              <p className="text-gray-600 mb-6">Thank you for subscribing to our newsletter!</p>
+              <Button onClick={closeSubscriptionPopup} className="bg-yellow-400 hover:bg-yellow-500 text-white w-full">
+                Close
+              </Button>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Footer */}
@@ -303,8 +318,8 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-gray-400 mb-6">
-                Apiumtech is an agile software development company offering services of software architecture, web
-                development, mobile app development, IT consulting, user experience design, bigdata and blockchain
+                Sonder Enterprises is an agile software development company offering services of software architecture,
+                web development, mobile app development, IT consulting, user experience design, bigdata and blockchain
               </p>
             </div>
 
@@ -353,10 +368,9 @@ export default function Home() {
               <div className="mt-12">
                 <h3 className="text-lg font-bold mb-6">CONTACT INFO</h3>
                 <ul className="space-y-4 text-gray-400">
-                  
                   <li className="flex items-center">
                     <span className="mr-2">✉️</span>
-                    <span>info@sonderenter.com</span>
+                    <span>support@sonderenter.com</span>
                   </li>
                 </ul>
               </div>
@@ -364,7 +378,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2023 SONDER ENTERPRISES. ALL RIGHTS RESERVED.</p>
+            <p className="text-gray-400 text-sm">© 2025 SONDER ENTERPRISES. ALL RIGHTS RESERVED.</p>
             {/* <div className="flex space-x-4 mt-4 md:mt-0">
               <Link href="#" className="text-gray-400 hover:text-yellow-400">
                 <svg
